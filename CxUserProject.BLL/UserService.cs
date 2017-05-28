@@ -1,4 +1,5 @@
-﻿using CxUserProject.Interface;
+﻿using CxUserProject.DB.Context;
+using CxUserProject.Interface;
 using CxUserProject.Model;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,14 @@ namespace CxUserProject.BLL
     {
         public IList<UserModel> GetAll()
         {
-            throw new NotImplementedException();
+            DbContext dbContext = new DbContext();
+            return dbContext.Users;
         }
 
         public UserModel GetById(int id)
         {
-            throw new NotImplementedException();
+            DbContext dbContext = new DbContext();
+            return dbContext.Users.First(t => t.Id == id);
         }
     }
 }

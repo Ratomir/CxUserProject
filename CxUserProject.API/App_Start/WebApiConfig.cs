@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using CxUserProject.API.App_Start;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace CxUserProject.API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+
+            DIResolver.Configure(config);
+            DBInitialize.Initialze();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

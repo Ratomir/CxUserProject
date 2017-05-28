@@ -1,4 +1,5 @@
 ﻿using CxUserProject.Interface;
+using CxUserProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,10 @@ namespace CxUserProject.API.Controllers
         }
 
         // GET: api/User
-        public IEnumerable<string> Get()
+        public IEnumerable<UserModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            var users = _userService.GetAll();
+            return users;
         }
 
         // GET: api/User/5

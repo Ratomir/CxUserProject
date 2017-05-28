@@ -35,6 +35,8 @@ namespace CxProject.DB
                     UpdateUser = UserContext.UserContextList.Single(t => t.Id == 2)
                 }
             };
+
+            RoleContextList.AddRange(lstRole);
         }
     }
 }

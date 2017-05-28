@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CxUserProject.DB\CxUserProject.DB.csproj">
+      <Project>{6ee59380-74c7-4ceb-a6e7-fde7dfe7106a}</Project>
+      <Name>CxUserProject.DB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CxUserProject.Interface\CxUserProject.Interface.csproj">
       <Project>{9BBE2D13-7490-4835-9718-7F94B8DD467C}</Project>
       <Name>CxUserProject.Interface</Name>
