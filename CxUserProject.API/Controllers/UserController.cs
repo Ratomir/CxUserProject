@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace CxUserProject.API.Controllers
 {
-    public class UserController : BaseApiController
+    public class UserController : BaseApiController<UserModel>
     {
         public IUserService _userService { get; set; }
 
@@ -18,32 +18,39 @@ namespace CxUserProject.API.Controllers
             _userService = userService;
         }
 
-        // GET: api/User
-        public IEnumerable<UserModel> Get()
+        [HttpGet]
+        public override List<UserModel> Get()
         {
             var users = _userService.GetAll();
             return users;
         }
 
-        // GET: api/User/5
-        public string Get(int id)
+        [HttpGet]
+        public override UserModel GetById(int id)
         {
-            return "value";
+            UserModel user = _userService.GetById(id);
+            return user;
         }
 
-        // POST: api/User
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public override UserModel Create([FromBody] UserModel model)
         {
+            UserModel createdUserModel = _userService.Create(model);
+            return createdUserModel;
         }
 
-        // PUT: api/User/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public override bool Put(int id, [FromBody] UserModel model)
         {
+            bool isUpdated = _userService.Update(id, model);
+            return isUpdated;
         }
 
-        // DELETE: api/User/5
-        public void Delete(int id)
+        [HttpDelete]
+        public override bool Delete(int id)
         {
+            bool isDeleted = _userService.Delete(id);
+            return isDeleted;
         }
     }
 }

@@ -8,7 +8,10 @@ namespace CxUserProject.Interface
 {
     public interface IBaseInterface<T>
     {
-        IList<T> GetAll();
+        List<T> GetAll();
         T GetById(int id);
+        T Create(T entity);
+        bool Delete(int id);
+        bool Update(int id, T entity);
     }
 }

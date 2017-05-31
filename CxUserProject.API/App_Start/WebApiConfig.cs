@@ -13,6 +13,9 @@ namespace CxUserProject.API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            //JSON FORMAT
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             DIResolver.Configure(config);
             DBInitialize.Initialze();
@@ -25,10 +28,6 @@ namespace CxUserProject.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            //JSON FORMAT
-            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
-            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }
